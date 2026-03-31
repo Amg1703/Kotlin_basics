@@ -13,19 +13,20 @@ fun main(){
     println(integer_array.contentToString())
 //    SO IN PROGRAMMING ARRAYS START FROM THE INDEX 0 TO LENGTH OF ARRAY - 1
 //    2) INDEX IN ARRAYS - TO ACCESS THE ELEMENTS INSIDE AN ARRAY WE CAN USE THE INDEX INSIDE [ ] TO ACCESS THE VALUES
-    println(integer_array[0])}
+    println(integer_array[0])
 //    NOW LETS WRITE A PROGRAM THAT TAKES AN INPUT FROM THE USER AS TO WHICH ELEMENT THEY WOULD WANT RETURN BASED ON THE
 //    ENTERED INDEX
-//    val index_value=readln()
-//    try{
-//        val actual_index_value=index_value.toIntOrNull()
-//        if(actual_index_value!=null && in 0<index_value<integer_array.lastIndex){
-//            println(integer_array[actual_index_value])
-//        }
-//    }
-//    catch(e: NullPointerException){
-//        println("Please only enter an integer number ")
-//    }
-//
-//
-//}
+    println("Enter the index you want to update: ")
+    val index_value=readln().toIntOrNull()
+    println("Enter the number you want to update that index with: ")
+    val new_number=readln().toIntOrNull()
+    if (index_value!=null && index_value in 0..integer_array.lastIndex && new_number!=null){
+        println("The old array is: ${integer_array.contentToString()}")
+        integer_array[index_value]=new_number
+        println("The update array is: ${integer_array.contentToString()}")
+    }
+    else{
+        println("The index value is not valid")
+    }
+
+}
