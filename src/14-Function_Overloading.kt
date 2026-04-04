@@ -33,3 +33,27 @@ fun String.reversed_string(): String{
 fun Int.reversed_string(): Int{
     return this@reversed_string.toString().reversed_string().toIntOrNull()?:0
 }
+
+// YOU CAN ALSO OVERLOAD A NORMAL FUNCTION JUST LIKE THAT THERES NO DIFFERENCE BETWEEN OVERLOADING A FUNCTION FOR A NORMAL AND EXTENSION FUNCTION
+fun normal_reversed_function(input_string_to_be_reversed: String): String{
+    val reversed_string = buildString {
+        for( i in input_string_to_be_reversed.lastIndex downTo 0){
+            append(input_string_to_be_reversed[i])
+        }
+    }
+    return reversed_string
+}
+fun normal_reversed_function(input_of_integer_to_be_reversed: Int): Int{
+    return input_of_integer_to_be_reversed.toString().normal_reversed_function().toIntOrNull()?:0
+}
+
+// BUT WHAT YOU CANNOT DO IS TRY TO OVERLOAD THE FUNCTION WITH SAME DATA TYPE OBJECT TO BE CALLED THAT ALSO HAS THE SAME RETURN TYPE AS THE ORIGINAL
+// FUNCTION SO IN THIS CASE THE COMPILER WOULDNT KNOW WHICH FUNCTION TO CALL AS THEY BOTH ARE BASICALLY DUPLICATES OF EACH OTHER SO HERE BELOW
+// WE CAN SEE THAT THE COMPILER SAYS CONFLICTING OVERLOADING FUNCTION
+
+//fun original_function(input_string: String): Int {
+//
+//}
+//fun original_function(input_string: String): String{
+//
+//}
